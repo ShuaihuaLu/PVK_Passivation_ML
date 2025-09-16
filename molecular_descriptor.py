@@ -14,11 +14,11 @@ MAX_EIGENVALUES = 15  # Number of largest eigenvalues to keep
 def generate_descriptor_documentation():
     """Generate documentation file for all RDKit molecular descriptors."""
     descriptor_list = Descriptors._descList
-    
+
     with open(DOCUMENTATION_FILE, "w", encoding="utf-8") as f:
         f.write("RDKit Molecular Descriptor Reference\n")
         f.write("="*40 + "\n\n")
-        
+
         for name, _ in descriptor_list:
             try:
                 descriptor_func = getattr(Descriptors, name)
@@ -31,10 +31,10 @@ def generate_descriptor_documentation():
 def calculate_coulomb_matrix(mol):
     """
     Compute the Coulomb matrix representation for a molecule.
-    
+
     Args:
         mol (rdkit.Chem.Mol): Input molecule
-        
+
     Returns:
         np.ndarray: Coulomb matrix
     """
@@ -43,16 +43,16 @@ def calculate_coulomb_matrix(mol):
         mol = Chem.AddHs(mol)
         AllChem.EmbedMolecule(mol, randomSeed=42)
         AllChem.UFFOptimizeMolecule(mol)
-    
+
     # Get atomic properties
     atomic_numbers = [atom.GetAtomicNum() for atom in mol.GetAtoms()]
     conf = mol.GetConformer()
     coords = np.array([conf.GetAtomPosition(i) for i in range(mol.GetNumAtoms())])
-    
+
     # Compute Coulomb matrix
     n_atoms = len(atomic_numbers)
     cm = np.zeros((n_atoms, n_atoms))
-    
+
     for i in range(n_atoms):
         for j in range(n_atoms):
             if i == j:
@@ -60,16 +60,16 @@ def calculate_coulomb_matrix(mol):
             else:
                 dist = np.linalg.norm(coords[i] - coords[j])
                 cm[i, j] = (atomic_numbers[i] * atomic_numbers[j]) / dist
-                
+
     return cm
 
 def process_molecule(file_path):
     """
     Process a single molecule from SDF file
-    
+
     Args:
         file_path (str): Path to SDF file
-        
+
     Returns:
         dict: Molecular features and metadata
     """
@@ -79,7 +79,7 @@ def process_molecule(file_path):
         if mol is None:
             print(f"Failed to load molecule: {file_path}")
             return None
-        
+
         # Calculate descriptors
         descriptor_results = {}
         for name, func in Descriptors.descList:
@@ -88,7 +88,7 @@ def process_molecule(file_path):
             except Exception as e:
                 descriptor_results[name] = np.nan
                 print(f"Error calculating {name} for {file_path}: {str(e)}")
-        
+
         # Calculate Coulomb matrix features
         try:
             cm = calculate_coulomb_matrix(mol)
@@ -98,16 +98,16 @@ def process_molecule(file_path):
         except Exception as e:
             print(f"Error calculating Coulomb matrix for {file_path}: {str(e)}")
             top_eigvals = [np.nan] * MAX_EIGENVALUES
-        
+
         # Package results
         result = {
             "file_name": os.path.basename(file_path),
             **descriptor_results,
             **{f"eigen_{i}": val for i, val in enumerate(top_eigvals)}
         }
-        
+
         return result
-    
+
     except Exception as e:
         print(f"Critical error processing {file_path}: {str(e)}")
         return None
@@ -117,28 +117,28 @@ def main():
     # Generate documentation
     generate_descriptor_documentation()
     print(f"Generated descriptor documentation at {DOCUMENTATION_FILE}")
-    
+
     # Get input files
     sdf_files = [
-        os.path.join(INPUT_DIR, f) 
-        for f in os.listdir(INPUT_DIR) 
+        os.path.join(INPUT_DIR, f)
+        for f in os.listdir(INPUT_DIR)
         if f.lower().endswith(".sdf")
     ]
-    
+
     if not sdf_files:
         print(f"No SDF files found in {INPUT_DIR}")
         return
-    
+
     print(f"Found {len(sdf_files)} SDF files for processing")
-    
+
     # Parallel processing
     with mp.Pool(processes=mp.cpu_count()) as pool:
         results = pool.map(process_molecule, sdf_files)
-    
+
     # Filter failed results
     successful_results = [r for r in results if r is not None]
     print(f"Successfully processed {len(successful_results)}/{len(sdf_files)} molecules")
-    
+
     # Save results
     if successful_results:
         df = pd.DataFrame(successful_results)
