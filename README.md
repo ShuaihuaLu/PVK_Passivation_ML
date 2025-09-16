@@ -1,6 +1,6 @@
 # PVK_Passivation_ML
 Activate Learning Application to PVK Passivation Molecule Design
-# Perovskite Bayesian Optimization (Scenario A)
+# Perovskite Bayesian Optimization (Section C)
 
 This repository provides a Python script (`perovskite_optimizer.py`) that wraps a Bayesian Optimization loop for perovskite experiments using **nextorch**. The script implements **Scenario A**: you have a small labeled initial dataset which is used to initialize a surrogate model; at each iteration the model prints its Top-K recommended candidates, and the loop simulates performing experiments by reading a sequence of actual measured samples from the Excel file and updating the surrogate.
 
