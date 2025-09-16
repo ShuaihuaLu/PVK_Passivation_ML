@@ -52,6 +52,7 @@ Maximum number of functional groups to add to the benzene ring during the functi
 max_substituents = 0   # skip functionalization
 max_substituents = 1   # add up to one functional group per product
 max_substituents = 2   # allow up to two substituents (combinatorics increases)
+```
 
 # NGBoost Regression for Property Prediction (Section B)
 
