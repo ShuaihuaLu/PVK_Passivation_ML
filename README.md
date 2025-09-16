@@ -29,13 +29,13 @@ This repository contains:
 ## Input data format
 ### Training CSV
 Expect columns in this order:
-- id, thickness, comp_A_pct, comp_B_pct, bandgap
+- `id, thickness, comp_A_pct, comp_B_pct, bandgap`
 First column: identifier (string or numeric)
 Columns 2..N+1: numeric features
 Last column: numeric target (e.g., bandgap in eV)
 ### Prediction CSV
 Same features but without the target:
-- material_id, feature_1, feature_2, ..., feature_N
+- `material_id, feature_1, feature_2, ..., feature_N`
 
 # Perovskite Bayesian Optimization (Section C)
 
