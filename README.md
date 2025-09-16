@@ -111,3 +111,37 @@ Install common dependencies:
 
 ```bash
 pip install numpy pandas matplotlib openpyxl
+```
+
+# Molecular Descriptor Generator (Section D)
+
+This repository provides a Python script to automatically compute **RDKit molecular descriptors** and **Coulomb matrix eigenvalues** from a collection of SDF files. It is designed for cheminformatics and machine learning workflows that require molecular features as input.
+
+---
+
+## Features
+
+- Extracts **all RDKit molecular descriptors** (physicochemical and structural).  
+- Generates **documentation file** (`descriptor_documentation.txt`) with descriptions of each descriptor.  
+- Computes **Coulomb matrix** for each molecule and extracts the **largest eigenvalues** (configurable).  
+- Supports **batch processing** of multiple `.sdf` files.  
+- Runs in **parallel** using Python's `multiprocessing` to accelerate computation.  
+- Saves results in a single **CSV file** (`molecular_descriptors.csv`).  
+
+---
+
+## Installation
+
+### Requirements
+
+- Python 3.8+
+- RDKit  
+- NumPy  
+- Pandas  
+
+Install dependencies (assuming you have [Conda](https://docs.conda.io/en/latest/)):  
+
+```bash
+conda create -c conda-forge -n mol_desc rdkit python=3.9 numpy pandas
+conda activate mol_desc
+
