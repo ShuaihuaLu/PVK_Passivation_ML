@@ -39,6 +39,19 @@ Below are the key parameters you can change, their types, purpose, and examples.
       "PEA": "C1=CC=C(C=C1)CCN",
       "PBA": "C1=CC=C(C=C1)CCCCN"
   }
+  ## Parameters
+
+### `max_substituents` — int (≥ 0)
+Maximum number of functional groups to add to the benzene ring during the functionalization stage.
+
+- `0` → functionalization is skipped and the original molecule is carried forward
+- `1` → add up to one substituent (typical small combinatorial load)
+
+**Examples:**
+```python
+max_substituents = 0   # skip functionalization
+max_substituents = 1   # add up to one functional group per product
+max_substituents = 2   # allow up to two substituents (combinatorics increases)
 
 # NGBoost Regression for Property Prediction (Section B)
 
