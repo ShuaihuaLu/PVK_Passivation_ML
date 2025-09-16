@@ -1,7 +1,7 @@
 # PVK_Passivation_ML
 Activate Learning Application to PVK Passivation Molecule Design
 
-# Property Prediction (NGBoost Regression)
+# NGBoost Regression for Property Prediction (Section A)
 
 A complete pipeline to train an NGBoost regressor for workfunction and formation energy prediction with Bayesian hyperparameter optimization, evaluation, visualization, SHAP-based feature importance, and saving model outputs.
 
@@ -26,14 +26,18 @@ This repository contains:
 
 ---
 
-## Quick start
-
-1. Clone or copy this repository into your working directory.
-2. Install required Python packages (example):
-
-```bash
-pip install numpy pandas scikit-learn matplotlib seaborn ngboost bayesian-optimization shap joblib
-
+## Input data format
+### Training CSV
+Expect columns in this order:
+material_id, feature_1, feature_2, ..., feature_N, target
+First column: identifier (string or numeric)
+Columns 2..N+1: numeric features
+Last column: numeric target (e.g., bandgap in eV)
+Example header:
+id, thickness, comp_A_pct, comp_B_pct, bandgap
+### Prediction CSV
+Same features but without the target:
+material_id, feature_1, feature_2, ..., feature_N
 
 # Perovskite Bayesian Optimization (Section C)
 
