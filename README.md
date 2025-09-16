@@ -1,4 +1,4 @@
-# PVK_Passivation_ML
+# AI for interface passivation molecules 
 Activate Learning Application to PVK Passivation Molecule Design
 
 # Molecular Generator (Section A)
