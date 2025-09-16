@@ -1,6 +1,30 @@
 # PVK_Passivation_ML
 Activate Learning Application to PVK Passivation Molecule Design
 
+# Molecular Generator (Section A)
+
+This repository contains a script to generate substituted benzene derivatives using RDKit. The pipeline performs two stages:
+
+1. **Functionalization** — attach functional groups to benzene ring carbons (supported groups: `CN`, `CF3`, `CH3`, `OCH3`, `COOH`, `OH`).
+2. **Halogenation** — substitute selected ring hydrogens with halogens (`F`, `Cl`, `Br`).
+
+The script produces SDF files for each derivative and a grid image showing up to the first 16 generated derivatives for each base molecule.
+
+## Files
+
+- `benzene_derivatives.py` — main generation script (RDKit-based).
+- Output directories created at runtime under the configured `output_dir` (default `output/`):
+  - `output/sdf/` — SDF files for generated derivatives
+  - `output/images/` — PNG grid images per base molecule
+
+## Requirements
+
+- Python 3.7+ (recommended)
+- [RDKit](https://www.rdkit.org/) — install via conda:
+  ```bash
+  conda create -n rdkit-env -c conda-forge rdkit python=3.8
+  conda activate rdkit-env
+
 # NGBoost Regression for Property Prediction (Section B)
 
 A complete pipeline to train an NGBoost regressor for workfunction and formation energy prediction with Bayesian hyperparameter optimization, evaluation, visualization, SHAP-based feature importance, and saving model outputs.
