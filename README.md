@@ -24,6 +24,21 @@ The script produces SDF files for each derivative and a grid image showing up to
   ```bash
   conda create -n rdkit-env -c conda-forge rdkit python=3.8
   conda activate rdkit-env
+## Parameters to change
+
+You can customize the generation by editing the `process_base_smiles(...)` call at the bottom of the script, or by importing and calling `process_base_smiles()` from another Python script.  
+Below are the key parameters you can change, their types, purpose, and examples.
+
+### Parameters
+
+- **`base_smiles_dict`** — `dict[str, str]`  
+  A dictionary mapping a short name (string) to a SMILES string of the base molecule.  
+  Example:
+  ```py
+  base_smiles_dict = {
+      "PEA": "C1=CC=C(C=C1)CCN",
+      "PBA": "C1=CC=C(C=C1)CCCCN"
+  }
 
 # NGBoost Regression for Property Prediction (Section B)
 
