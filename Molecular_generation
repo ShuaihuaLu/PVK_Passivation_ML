@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-benzene_derivatives.py
+Molecular generation.py
 
 Generate substituted benzene derivatives by:
   1) Attaching functional groups to benzene carbons (CN, CF3, CH3, OCH3, COOH, OH)
