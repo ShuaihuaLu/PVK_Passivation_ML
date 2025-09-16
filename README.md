@@ -1,5 +1,40 @@
 # PVK_Passivation_ML
 Activate Learning Application to PVK Passivation Molecule Design
+
+# Property Prediction (NGBoost Regression)
+
+A complete pipeline to train an NGBoost regressor for workfunction and formation energy prediction with Bayesian hyperparameter optimization, evaluation, visualization, SHAP-based feature importance, and saving model outputs.
+
+This repository contains:
+
+- `NGBoost_Regression.py` — main script:
+  - Loads training and prediction CSVs
+  - Scales features with a named `StandardScaler`
+  - Tunes NGBoost hyperparameters using `bayes_opt`
+  - Trains final `NGBRegressor` on the training set
+  - Evaluates on a validation split and reports R², MAE, MSE and 95% coverage of predictive intervals
+  - Produces predictive distributions (mean, 95% CI, uncertainty) for new samples
+  - Saves predictions to CSV and produces publication-style plots (performance, histogram, SHAP)
+  - Saves trained model and scaler with `joblib`
+- Example outputs (created by the script):
+  - `material_predictions.csv`
+  - `performance_plot.png`
+  - `prediction_distribution.png`
+  - `feature_importance.png`
+  - `trained_ngb_model.pkl` and `feature_scaler.pkl`
+  - `output.log`
+
+---
+
+## Quick start
+
+1. Clone or copy this repository into your working directory.
+2. Install required Python packages (example):
+
+```bash
+pip install numpy pandas scikit-learn matplotlib seaborn ngboost bayesian-optimization shap joblib
+
+
 # Perovskite Bayesian Optimization (Section C)
 
 This repository provides a Python script (`perovskite_optimizer.py`) that wraps a Bayesian Optimization loop for perovskite experiments using **nextorch**. The script implements **Scenario A**: you have a small labeled initial dataset which is used to initialize a surrogate model; at each iteration the model prints its Top-K recommended candidates, and the loop simulates performing experiments by reading a sequence of actual measured samples from the Excel file and updating the surrogate.
