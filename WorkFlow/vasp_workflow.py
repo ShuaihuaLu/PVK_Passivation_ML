@@ -802,9 +802,9 @@ echo ""
 echo "Checking input files..."
 for file in POSCAR INCAR KPOINTS POTCAR; do
     if [ -f $file ]; then
-        echo "  ✓ $file found"
+        echo "$file found"
     else
-        echo "  ✗ $file NOT FOUND - Aborting!"
+        echo "$file NOT FOUND - Aborting!"
         exit 1
     fi
 done
