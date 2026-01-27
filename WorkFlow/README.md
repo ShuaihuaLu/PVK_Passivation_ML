@@ -30,7 +30,6 @@ Automated workflow for solid-state materials:
 
 ## Table of Contents
 
-- [Features Comparison](#-features-comparison)
 - [Installation](#-installation)
 - [Quick Start](#-quick-start)
   - [ORCA Workflow](#orca-workflow)
@@ -38,9 +37,6 @@ Automated workflow for solid-state materials:
 - [ORCA Documentation](#-orca-molecular-calculations)
 - [VASP Documentation](#-vasp-materials-calculations)
 - [Output Files](#-output-files)
-- [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [License](#-license)
 - [Citation](#-citation)
 
 ## Installation
