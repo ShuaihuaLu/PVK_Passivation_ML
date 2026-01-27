@@ -299,18 +299,18 @@ echo "-------------------------------------------"
                         f.write(result.stderr)
                 
                 if result.returncode == 0:
-                    print(f"  ✓ Completed successfully")
+                    print(f"Completed successfully")
                 else:
-                    print(f"  ✗ Calculation failed with return code {result.returncode}")
+                    print(f"Calculation failed with return code {result.returncode}")
                     
             except FileNotFoundError:
-                print(f"  ✗ Error: ORCA not found in PATH")
-                print("  Please install ORCA and add it to your PATH, or run calculations manually")
+                print(f"Error: ORCA not found in PATH")
+                print("Please install ORCA and add it to your PATH, or run calculations manually")
                 break
             except subprocess.TimeoutExpired:
-                print(f"  ✗ Calculation timed out after 1 hour")
+                print(f"Calculation timed out after 1 hour")
             except Exception as e:
-                print(f"  ✗ Error: {str(e)}")
+                print(f"Error: {str(e)}")
 
 
 def main():
