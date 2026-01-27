@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
 [![ORCA](https://img.shields.io/badge/ORCA-compatible-orange.svg)](https://orcaforum.kofo.mpg.de/)
-[![VASP](https://img.shields.io/badge/VASP-5.4%2B-red.svg)](https://www.vasp.at/)
+[![VASP](https://img.shields.io/badge/VASP-6.4%2B-red.svg)](https://www.vasp.at/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 Automated Python workflows for quantum chemistry and materials calculations. This repository provides complete automation for **ORCA** (molecular calculations) and **VASP** (materials/solid-state calculations), from input file generation to results analysis.
@@ -56,7 +56,7 @@ Automated workflow for solid-state materials:
 **For VASP Workflow:**
 - Python 3.9+
 - NumPy
-- VASP 5.4+ (with valid license)
+- VASP 6.4+ (with valid license)
 - VASP pseudopotentials (POTCAR files)
 
 ### Install Dependencies
@@ -310,7 +310,6 @@ orca_calculations/
 
 **Step 2: Density of States**
 - Static calculation on relaxed structure
-- Tetrahedron method (ISMEAR=-5)
 - Dense k-point mesh for accurate DOS
 
 **Step 3: Band Structure**
