@@ -122,11 +122,3 @@ I can create these files (requirements, example notebook, or script) on request.
 ## Contact & citation
 
 If you use this dataset or models from this repository in publications, please reference the repository (add the repository citation entry once you create a citable DOI or paper).
-
-## License
-
-No LICENSE file is included in the repository by default. Add a license (MIT, Apache-2.0, etc.) to clarify reuse terms.
-
-## Acknowledgements
-
-This repo was prepared to hold molecular descriptor datasets and examples for ML-driven passivation screening. Thank you for contributing — open an issue if you'd like me to extend this README or generate example notebooks and scripts.
